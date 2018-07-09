@@ -1,0 +1,10 @@
+﻿@model Filtros.Viewmodels.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Login</h2>
+<div>
+    @Html.EditorForModel(Model)
+    <input type="button" accept="submit" value="Enviar" />
+</div>
