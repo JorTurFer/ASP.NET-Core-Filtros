@@ -8,6 +8,7 @@ using Filtros.Viewmodels;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Filtros.Controllers
 {
@@ -37,7 +38,7 @@ namespace Filtros.Controllers
         [Route("login")]
         public async Task<IActionResult> Login(LoginViewModel vm)
         {
-            if (ModelState.IsValid && _accountServices.CheckCredentials(vm.Username,vm.Password))
+            if (ModelState.IsValid && _accountServices.CheckCredentials(vm.Username, vm.Password))
             {
                 var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
                 identity.AddClaim(new Claim(ClaimTypes.Name, vm.Username));
@@ -49,6 +50,14 @@ namespace Filtros.Controllers
             }
             vm.ErrorMessage = "Not authorized";
             return View(vm);
+        }
+        
+        [Route("logout")]
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction("Index", "Home");
         }
     }
 }
