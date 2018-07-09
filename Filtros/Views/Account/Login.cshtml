@@ -5,6 +5,9 @@
 
 <h2>Login</h2>
 <div>
+    @using (Html.BeginForm("account", "login", FormMethod.Post))
+    {
     @Html.EditorForModel(Model)
-    <input type="button" accept="submit" value="Enviar" />
+    <input type="submit" value="Enviar" />
+    }
 </div>
