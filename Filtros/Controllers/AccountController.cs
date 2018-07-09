@@ -30,7 +30,7 @@ namespace Filtros.Controllers
         [Route("login")]
         public IActionResult Login()
         {
-            return View();
+            return View(new LoginViewModel());
         }
 
         [HttpPost]

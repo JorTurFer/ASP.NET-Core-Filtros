@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Filtros.Models.Services;
 
 namespace Filtros
 {
@@ -28,6 +29,7 @@ namespace Filtros
                 opt.LoginPath = "/account/login";
             });
             services.AddMvc();
+            services.AddTransient<IAccountServices, AccountServices>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

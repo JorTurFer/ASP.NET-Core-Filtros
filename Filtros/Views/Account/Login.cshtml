@@ -13,8 +13,10 @@
     }
     @using (Html.BeginForm("login", "account", FormMethod.Post))
     {
-        @Html.EditorFor(Model.Username);
-        @Html.EditorFor(Model.Password);
+        @Html.LabelFor(m => m.Username)<br />
+        @Html.EditorFor(m => m.Username) <br />
+        @Html.LabelFor(m => m.Password)<br />
+        @Html.EditorFor(m => m.Password) <br /><br />
         <input type="submit" value="Enviar" />
     }
 </div>

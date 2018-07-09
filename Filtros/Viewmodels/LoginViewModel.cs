@@ -9,7 +9,10 @@ namespace Filtros.Viewmodels
     public class LoginViewModel
     {
         [Required]
+        [Display(Name = "Usuario")]
         public string Username { get; set; }
+        [Display(Name = "Password")]
+        [DataType(DataType.Password)]
         public string Password { get; set; }        
         public string ErrorMessage { get; set; }
     }
