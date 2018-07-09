@@ -11,5 +11,15 @@ namespace Filtros.Models.Services
         {
             return string.Compare(user, password, true) == 0;
         }
+
+        public IEnumerable<string> GetRolesForUser(string userName)
+        {
+            List<string> roles = new List<string>();
+            if (userName.Equals("jorge", StringComparison.OrdinalIgnoreCase))
+            {
+                roles.Add("admin");
+            }
+            return roles;
+        }
     }
 }

@@ -8,5 +8,6 @@ namespace Filtros.Models.Services
     public interface IAccountServices
     {
         bool CheckCredentials(string user, string password);
+        IEnumerable<string> GetRolesForUser(string userName);
     }
 }
