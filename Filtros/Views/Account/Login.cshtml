@@ -7,7 +7,8 @@
 <div>
     @using (Html.BeginForm("login", "account", FormMethod.Post))
     {
-    @Html.EditorForModel(Model)
-    <input type="submit" value="Enviar" />
+        @Html.EditorFor(Model.Username);
+        @Html.EditorFor(Model.Password);
+        <input type="submit" value="Enviar" />
     }
 </div>
