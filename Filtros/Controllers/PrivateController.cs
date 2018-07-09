@@ -15,5 +15,21 @@ namespace Filtros.Controllers
         {
             return Content("Private index");
         }
+
+        [Route("admin")]
+        [Authorize(Roles = "admin")]
+        public IActionResult Admin()
+        {
+            return Content("Only Admins");
+        }
+
+        [Route("four")]
+        [Authorize(Policy = "FourCharacters")]
+        public IActionResult four()
+        {
+            return Content("Four letters only");
+        }
+
+        
     }
 }

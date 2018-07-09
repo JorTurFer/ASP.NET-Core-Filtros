@@ -28,6 +28,14 @@ namespace Filtros
                 opt.AccessDeniedPath = "/account/login";
                 opt.LoginPath = "/account/login";
             });
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("FourCharacters", policy =>
+                    policy
+                        .RequireAuthenticatedUser()
+                        .RequireAssertion(ctx => ctx.User.Identity.Name.Length == 4)
+                );
+            });
             services.AddMvc();
             services.AddTransient<IAccountServices, AccountServices>();
         }

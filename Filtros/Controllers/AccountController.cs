@@ -42,6 +42,10 @@ namespace Filtros.Controllers
             {
                 var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme);
                 identity.AddClaim(new Claim(ClaimTypes.Name, vm.Username));
+                foreach (var roleName in _accountServices.GetRolesForUser(vm.Username))
+                {
+                    identity.AddClaim(new Claim(ClaimTypes.Role, roleName));
+                }
                 var principal = new ClaimsPrincipal(identity);
                 await HttpContext.SignInAsync(
                     CookieAuthenticationDefaults.AuthenticationScheme, principal
