@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Filtros.Controllers
 {
-    [Route("account")]
+    [Route("account")]    
     public class AccountController : Controller
     {
         IAccountServices _accountServices;
@@ -29,6 +29,7 @@ namespace Filtros.Controllers
 
         [HttpGet]
         [Route("login")]
+        [AllowAnonymous]
         public IActionResult Login()
         {
             return View(new LoginViewModel());
@@ -36,6 +37,7 @@ namespace Filtros.Controllers
 
         [HttpPost]
         [Route("login")]
+        [AllowAnonymous]
         public async Task<IActionResult> Login(LoginViewModel vm)
         {
             if (ModelState.IsValid && _accountServices.CheckCredentials(vm.Username, vm.Password))

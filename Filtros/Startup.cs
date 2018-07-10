@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Filtros.Models.Services;
+using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Filtros
 {
@@ -36,7 +38,14 @@ namespace Filtros
                         .RequireAssertion(ctx => ctx.User.Identity.Name.Length == 4)
                 );
             });
-            services.AddMvc();
+
+            services.AddMvc(opt =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                                    .RequireAuthenticatedUser()
+                                    .Build();
+                opt.Filters.Add(new AuthorizeFilter(policy));
+            });
             services.AddTransient<IAccountServices, AccountServices>();
         }
 

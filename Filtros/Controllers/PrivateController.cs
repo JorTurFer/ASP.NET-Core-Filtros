@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace Filtros.Controllers
 {
     [Route("private")]
-    [Authorize]
     public class PrivateController : Controller
     {
         public IActionResult Index()
