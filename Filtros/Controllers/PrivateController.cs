@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Filtros.Controllers
 {
-    [Route("private")]
     public class PrivateController : Controller
     {
         public IActionResult Index()

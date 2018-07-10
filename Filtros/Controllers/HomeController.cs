@@ -10,6 +10,7 @@ namespace Filtros.Controllers
 {
     public class HomeController : Controller
     {
+        [ResponseCache(Duration = 10)]
         public IActionResult Index()
         {
             return View();

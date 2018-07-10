@@ -47,6 +47,8 @@ namespace Filtros
                 opt.Filters.Add(new AuthorizeFilter(policy));
             });
             services.AddTransient<IAccountServices, AccountServices>();
+            services.AddResponseCaching();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
