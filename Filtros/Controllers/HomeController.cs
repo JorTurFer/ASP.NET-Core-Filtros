@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Filtros.Models;
+using Filtros.Extensions.Filters;
 
 namespace Filtros.Controllers
 {
@@ -33,6 +34,11 @@ namespace Filtros.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        [SimpleCache]
+        public IActionResult GetTime()
+        {
+            return Content(DateTime.Now.ToString("T"));
         }
     }
 }

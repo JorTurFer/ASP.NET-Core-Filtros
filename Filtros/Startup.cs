@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Filtros.Models.Services;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Authorization;
+using Filtros.Extensions.Filters;
 
 namespace Filtros
 {
@@ -45,6 +46,8 @@ namespace Filtros
                                     .RequireAuthenticatedUser()
                                     .Build();
                 opt.Filters.Add(new AuthorizeFilter(policy));
+                opt.Filters.Add(new HandledByMvcAttribute());
+
             });
             services.AddTransient<IAccountServices, AccountServices>();
             services.AddResponseCaching();
